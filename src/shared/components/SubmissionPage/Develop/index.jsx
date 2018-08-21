@@ -15,7 +15,7 @@ import PT from 'prop-types';
 import { PrimaryButton } from 'topcoder-react-ui-kit';
 import { config } from 'topcoder-react-utils';
 
-import FilestackFilePicker from '../FilestackFilePicker';
+import FilePicker from '../FilePicker';
 import Uploading from '../Uploading';
 import './styles.scss';
 
@@ -79,9 +79,6 @@ class Develop extends React.Component {
       setFilePickerError,
       setFilePickerFileName,
       setFilePickerDragged,
-      userId,
-      setFilePickerUploadProgress,
-      setSourceFilestackData,
     } = this.props;
 
     const id = '1';
@@ -116,7 +113,7 @@ Please follow the instructions on the Challenge Details page regarding
               </div>
               <div styleName="right">
                 <div styleName="file-picker-container">
-                  <FilestackFilePicker
+                  <FilePicker
                     mandatory
                     id={id}
                     title="SUBMISSION"
@@ -126,13 +123,8 @@ Please follow the instructions on the Challenge Details page regarding
                     setError={_.partial(setFilePickerError, id)}
                     fileName={fpState.fileName}
                     setFileName={_.partial(setFilePickerFileName, id)}
-                    uploadProgress={fpState.uploadProgress}
-                    setUploadProgress={_.partial(setFilePickerUploadProgress, id)}
-                    setFilestackData={setSourceFilestackData}
                     dragged={fpState.dragged}
                     setDragged={_.partial(setFilePickerDragged, id)}
-                    userId={userId}
-                    challengeId={challengeId}
                   />
                 </div>
                 <p>
@@ -213,7 +205,6 @@ I UNDERSTAND AND AGREE
  * Prop Validation
  */
 Develop.propTypes = {
-  userId: PT.string.isRequired,
   challengeId: PT.number.isRequired,
   challengeName: PT.string.isRequired,
   challengesUrl: PT.string.isRequired,
@@ -234,8 +225,6 @@ Develop.propTypes = {
   setFilePickerError: PT.func.isRequired,
   setFilePickerFileName: PT.func.isRequired,
   setFilePickerDragged: PT.func.isRequired,
-  setFilePickerUploadProgress: PT.func.isRequired,
-  setSourceFilestackData: PT.func.isRequired,
 };
 
 export default Develop;

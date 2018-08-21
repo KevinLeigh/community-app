@@ -51,9 +51,6 @@ function SubmissionsPage(props) {
 const filestackDataProp = PT.shape({
   filename: PT.string.isRequired,
   mimetype: PT.string.isRequired,
-  challengeId: PT.number.isRequired,
-  memberId: PT.string.isRequired,
-  type: PT.string.isRequired,
   size: PT.number.isRequired,
   key: PT.string.isRequired,
   container: PT.string.isRequired,

@@ -261,7 +261,6 @@ Learn more about formatting your submission file.
                   setDragged={_.partial(setFilePickerDragged, 'file-picker-submission')}
                   setFilestackData={setSubmissionFilestackData}
                   userId={userId}
-                  challengeId={challengeId}
                 />
                 <FilestackFilePicker
                   mandatory
@@ -278,7 +277,6 @@ Learn more about formatting your submission file.
                   setDragged={_.partial(setFilePickerDragged, 'file-picker-source')}
                   setFilestackData={setSourceFilestackData}
                   userId={userId}
-                  challengeId={challengeId}
                 />
                 <FilestackFilePicker
                   mandatory
@@ -295,7 +293,6 @@ Learn more about formatting your submission file.
                   setDragged={_.partial(setFilePickerDragged, 'file-picker-preview')}
                   setFilestackData={setPreviewFilestackData}
                   userId={userId}
-                  challengeId={challengeId}
                 />
               </div>
               <span styleName="desc">
