@@ -53,23 +53,25 @@ const newsletters = [
   },
 ];
 
-const SAVE_DELAY = 1000;
+const SAVE_DELAY = 400;
 
 export default class EmailPreferences extends ConsentComponent {
-  saveEmailPreferences = debounce(() => {
+  saveEmailPreferences = (emailPreferences) => {
+    if (Object.keys(emailPreferences).length === 0) {
+      return
+    }
     const {
       profile,
       saveEmailPreferences,
       tokenV3,
     } = this.props;
-    const { emailPreferences } = this.state;
 
     saveEmailPreferences(
       profile,
       tokenV3,
       emailPreferences,
     );
-  }, SAVE_DELAY);
+  };
 
   constructor(props) {
     super(props);
@@ -96,13 +98,14 @@ export default class EmailPreferences extends ConsentComponent {
     this.showConsent(this.onChange.bind(this, id, checked));
   }
 
-  onChange(id, checked) {
+  onChange = debounce((id, checked) => {
     const { emailPreferences } = this.state;
     emailPreferences[id] = checked;
     this.setState({
       emailPreferences,
-    }, () => this.saveEmailPreferences());
-  }
+    });
+    this.saveEmailPreferences(emailPreferences)
+  }, SAVE_DELAY);
 
   populate(data) {
     const { populated } = this.state;
